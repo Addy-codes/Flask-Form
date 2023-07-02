@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Show Data Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333333;
+            margin-top: 50px;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        th,
+        td {
+            padding: 8px 12px;
+            border: 1px solid #dddddd;
+        }
+
+        .no-data-message {
+            color: #555555;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            background-color: #7d98ff;
+            color: #ffffff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-container button:hover {
+            background-color: #506dff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Show Data Page</h1>
+
+    {% if students %}
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Value</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>Name</td>
+            <td>{{ student.name }}</td>
+        </tr>
+        <tr>
+            <td>College</td>
+            <td>{{ student.college }}</td>
+        </tr>
+        <!-- Add more rows for additional fields -->
+        {% endfor %}
+    </table>
+    {% else %}
+    <p class="no-data-message">No data available</p>
+    {% endif %}
+
+    <div class="button-container">
+        <button onclick="window.location.href='{{ url_for('index') }}'">Go Back</button>
+    </div>
+</body>
+
+</html>

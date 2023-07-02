@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Submit Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333333;
+            margin-top: 50px;
+        }
+
+        p {
+            color: #555555;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        th,
+        td {
+            padding: 8px 12px;
+            border: 1px solid #dddddd;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .button-container button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #7d98ff;
+            color: #ffffff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-container button:hover {
+            background-color: #506dff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Form Submitted</h1>
+    <p>Thank you for submitting your details.</p>
+
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>{{ name }}</td>
+        </tr>
+        <tr>
+            <td>College</td>
+            <td>{{ college }}</td>
+        </tr>
+        <!-- Add more rows for additional fields -->
+    </table>
+
+    <div class="button-container">
+        <button onclick="window.location.href='{{ url_for('show') }}'">Show all responses</button>
+        <button onclick="window.location.href='{{ url_for('form') }}'">Submit another response</button>
+    </div>
+</body>
+
+</html>
