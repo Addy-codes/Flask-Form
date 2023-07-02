@@ -58,17 +58,18 @@
     {% if students %}
     <table>
         <tr>
-            <th>Field</th>
-            <th>Value</th>
+            <th>Registeration No.</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>College</th>
+            <th>Email</th>
+            <th>Major</th>
         </tr>
         {% for student in students %}
         <tr>
-            <td>Name</td>
-            <td>{{ student.name }}</td>
-        </tr>
-        <tr>
-            <td>College</td>
-            <td>{{ student.college }}</td>
+            {% for i in student %}
+            <td>{{ i }}</td>
+            {% endfor %}
         </tr>
         <!-- Add more rows for additional fields -->
         {% endfor %}

@@ -57,21 +57,7 @@
     <h1>Form Submitted</h1>
     <p>Thank you for submitting your details.</p>
 
-    <table>
-        <tr>
-            <th>Field</th>
-            <th>Value</th>
-        </tr>
-        <tr>
-            <td>Name</td>
-            <td>{{ name }}</td>
-        </tr>
-        <tr>
-            <td>College</td>
-            <td>{{ college }}</td>
-        </tr>
-        <!-- Add more rows for additional fields -->
-    </table>
+
 
     <div class="button-container">
         <button onclick="window.location.href='{{ url_for('show') }}'">Show all responses</button>
