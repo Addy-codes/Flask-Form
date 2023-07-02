@@ -3,17 +3,16 @@ import mysql.connector
 
 app = Flask(__name__)
 
-# Dummy list to store submitted student data
-students = []
-
 connection = mysql.connector.connect(
     host="localhost",
     port="3307",
-    database="user-system",
+    database="student-form",
     user="root",
     password="qwerty123",
 )
 cursor = connection.cursor()
+
+student = []
 
 
 @app.route("/")
@@ -25,18 +24,16 @@ def index():
 def form():
     if request.method == "POST":
         name = request.form["name"]
+        age = request.form["age"]
         college = request.form["college"]
-        # Add more fields as needed
+        email = request.form["email"]
+        major = request.form["major"]
 
-        # Create a dictionary to store the student data
-        student = {
-            "name": name,
-            "college": college
-            # Add more fields as needed
-        }
-
-        # Append the student dictionary to the students list
-        students.append(student)
+        cursor.execute(
+            "INSERT INTO students(name, age, college, email, major) VALUES (%s,%s,%s,%s,%s)",
+            (name, age, college, email, major),
+        )
+        connection.commit()
 
         # Redirect to the submit page
         return redirect("/submit")
@@ -51,6 +48,9 @@ def submit():
 
 @app.route("/show")
 def show():
+    cursor.execute("SELECT * FROM students;")
+    students = cursor.fetchall()
+    print(students)
     return render_template("show.html", students=students)
 
 
